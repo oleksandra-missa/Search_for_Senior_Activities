@@ -17,7 +17,7 @@ class Cas:
     def __init__(self, LP, NumerPozycji, Dzielnica, Nazwa_Dzielnicy, Nazwa,
                  PodmiotProwadzacy, Ulica, NumerBudynku, NumerLokalu,
                  KodPocztowy, Miasto, Wojewodztwo, Kraj,
-                 Kontakt1, Kontakt2, Email, Uwagi, Adres):
+                 Kontakt1, Kontakt2, Uwagi, Adres):
         self.LP = LP
         self.NumerPozycji = NumerPozycji
         self.Dzielnica = Dzielnica
@@ -33,7 +33,6 @@ class Cas:
         self.Kraj = Kraj
         self.Kontakt1 = Kontakt1
         self.Kontakt2 = Kontakt2
-        self.Email = Email
         self.Uwagi = Uwagi
         self.Adres = Adres
         self.Zajecia = []

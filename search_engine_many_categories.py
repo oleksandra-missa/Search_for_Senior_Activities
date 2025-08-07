@@ -5,10 +5,10 @@ from datetime import datetime, timedelta
 from Cas import Cas
 
 #Loading of excel files
-xls = pd.ExcelFile("DaneDlaCasow.xlsx")
+xls = pd.ExcelFile("CAS_data.xlsx")
 sheets = {sheet_name: xls.parse(sheet_name) for sheet_name in xls.sheet_names}
-df_zajecia = sheets["Zajecia"]
-df_casy = sheets["CASe"]
+df_zajecia = sheets["Classes"]
+df_casy = sheets["CAS_OpenData"]
 
 
 
@@ -36,7 +36,6 @@ def LoadDataFromCas(df_casy):
             VariablesInCas[14],
             VariablesInCas[15],
             VariablesInCas[16],
-            VariablesInCas[17],
         )
         temporaryCas.addCas()
 
