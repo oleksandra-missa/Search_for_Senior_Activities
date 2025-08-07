@@ -2,7 +2,7 @@ import flet as ft
 import datetime
 import search_engine_many_categories
 from dateutil.relativedelta import relativedelta
-
+import sys
 #Category
 CategoriesSelected = [["Zajęcia edukacyjne","Aktywność fizyczna","Twórczość i hobby","Integracja i wycieczki"], [1,1,1,1]]
 
@@ -18,6 +18,9 @@ TypesSelected = [["Stacjonarny","Online"], [1,1]]
 
 ActivitiesSearched = []
 
+
+
+
 def print_categories_selected(categories_selected):
     print("CategoriesSelected:")
     for label, selected in zip(categories_selected[0], categories_selected[1]):
@@ -28,6 +31,9 @@ def main(page: ft.Page):
     page.theme_mode = ft.ThemeMode.LIGHT
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
+
+    def close_function(e):
+        page.window.destroy()
 
     def open_facility(e):
         page.clean()
@@ -187,7 +193,7 @@ def main(page: ft.Page):
 
     def go_back(e):
         page.clean()
-        page.add(title,activity_button,facility_button, category_button,day_button,hour_button,on_off_site_button,price_button,search_button)
+        page.add(title,activity_button,facility_button, category_button,day_button,hour_button,on_off_site_button,price_button,search_button,close_button)
 
     def open_search(e):
         page.clean()
@@ -223,6 +229,8 @@ def main(page: ft.Page):
 
         page.update()
 
+
+
     title = ft.Text("Sortuj wyniki według", size=40, weight="bold")
     activity_button = ft.ElevatedButton("Zajęcia", on_click=open_day)
     facility_button = ft.ElevatedButton("Ośrodek", on_click=open_facility)
@@ -232,7 +240,8 @@ def main(page: ft.Page):
     on_off_site_button = ft.ElevatedButton("Tryb", on_click=open_mode)
     price_button = ft.ElevatedButton("Cena", on_click=cena_sort)
     search_button = ft.ElevatedButton("wyszukaj", on_click=open_search)
+    close_button = ft.ElevatedButton("wyjdz", on_click=close_function)
+    page.add(title,activity_button,facility_button, category_button,day_button,hour_button,on_off_site_button,price_button,search_button,close_button)
 
-    page.add(title,activity_button,facility_button, category_button,day_button,hour_button,on_off_site_button,price_button,search_button)
-
-ft.app(target=main)
+if __name__ == "__main__":
+    ft.app(target=main)

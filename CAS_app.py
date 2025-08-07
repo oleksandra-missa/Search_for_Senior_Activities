@@ -2,8 +2,11 @@ import flet as ft
 import pandas as pd
 import requests
 import re
+import search_by_many_parameters
+import sys
 from flet_lottie import Lottie
 from geopy.distance import geodesic
+import subprocess
 
 def geocode_address(address):
     if "kraków" not in address.lower():
@@ -38,35 +41,12 @@ def search_view(page: ft.Page):
     )
 
     def open_sorting(e):
-        sorting_panel = ft.Container(
-            content=ft.Column([
-                ft.Text("Sortowanie wyników", size=20, weight=ft.FontWeight.BOLD),
-                ft.Dropdown(label="Kategoria", options=[
-                    ft.dropdown.Option("Zajęcia edukacyjne"),
-                    ft.dropdown.Option("Aktywność fizyczna"),
-                ]),
-                ft.Dropdown(label="Tryb", options=[
-                    ft.dropdown.Option("Stacjonarny"),
-                    ft.dropdown.Option("Online"),
-                ]),
-                ft.ElevatedButton("Zamknij", on_click=lambda e: close_sorting_panel()),
-            ]),
-            width=int(e.page.width * 0.8),
-            height=e.page.height,
-            bgcolor=ft.Colors.WHITE,
-            border=ft.border.all(1, ft.Colors.BLACK12),
-            padding=20,
-            right=0,
-            top=0,
-            animate=ft.Animation(500, ft.AnimationCurve.EASE_IN_OUT),
+        print("Open Sorting:")
+        subprocess.Popen(
+            [sys.executable, "search_by_many_parameters.py"],
+            creationflags=subprocess.CREATE_NEW_CONSOLE  # Launch in new terminal window
         )
 
-        def close_sorting_panel():
-            e.page.overlay.remove(sorting_panel)
-            e.page.update()
-
-        e.page.overlay.append(sorting_panel)
-        e.page.update()
 
 
     sort_button = ft.ElevatedButton("⚙️ Sortowanie", on_click=open_sorting)
