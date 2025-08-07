@@ -141,11 +141,6 @@ The emails.py script:
 * 	Implements filtering logic based on multiple criteria (category, price, date, time, mode).
 * 	Populates CAS and Activity objects and returns matching activities.
 
-⸻
-
-📷 Screenshot (main page)
-
-![img_1.png](img_1.png)
 
 ⸻
 
